@@ -1,0 +1,78 @@
+
+
+
+
+## CREATING THE DATABASE WITH create_db.py WORKS FINE.
+
+## CREATING THE TABLES WITH create_tabels.py WORKES FINE.
+
+## ITS THE Populate.py SCRIPT THAT WORKS NOW, FOR POPULATING THE DATABASE.
+
+
+
+## **CHECKPOINT**
+
+
+The initial connection and creation of the database works fine.
+Even the population of the database.
+
+
+the files that are relevant as of today: **08/03/24** are:
+create_db.py
+create_table.py
+populate.py
+database config.ini
+
+
+these all talk very well with postgres and each other. 
+    basic loggin functions for the reequest hase been in+mplemented and works fine. 
+
+**THE FRAMEWORK**
+Is a straight copy of the GP file with some key constraints.
+This is because I want the inital functions to work before the schema becomes more complex.
+
+
+**NEXT STEP:**
+[X] feed all of GP data to the database. 
+    [ ] this needs to be verified somehow.
+
+[ ] establish update script. 
+    The script that is most relevant right now is the **automatic_update_testnew.** 
+    the script that works: 
+    create_db
+    create_table 
+    populate 
+    These tre talk and work with eachoter... Well the dont talk to eachoter yet but they all build on eachotehr.. 
+
+    The problem is to get the update to work, and how can i see that it is updating, THEN we can focus on storing the old data. 
+    
+**Checkpoint** 
+Roll back. 
+Start over with new script. 
+the scripts in **automatic_update_testnew.py** runs but throws a error related to a NORAD_CAT_ID and a TLE. I do not fully understand what the script does
+    So I think I have to take a step back from that... 
+
+The script **automatic_update.py** works BUT it says: // New data inserted into gp_file
+Error inserting data into gp_file: insert or update on table "gp_file_historical" violates foreign key constraint "gp_file_historical_gp_file_id_fkey"
+DETAIL:  Key (gp_file_id)=(20001) is not present in table "gp_file". //
+i also noticed that it acutally imported on input... So it kinda works but hte violations is weird... I need it to update and not insert.. 
+NExt step would be to first make sur the data from gp_file ends up in history and then the data ini gp_file can be updated.... 
+
+## I AM MOVING FORWARD AND ROLLING BACK TO ONLY TESTING THE UPDATE AND NOT THE HISTORICAL STORING. 
+I was worried that, how would I know what data and when it got updated, BUT the timestamp will tell me!! 
+Because it only adds when it arrives in the database!! PERFEKT. 
+Still rolling back to only test a update of data. 
+
+
+**START 15/03/2024** 
+Jobbar med att försöka få updateringen att fungera som den ska. 
+i **update.py** det fungerar att hämta och printa ut det som det ska i terminalen. 
+
+    [x] Jag får inte loopen att köra för det finns för många close.conn() i de andra functionerna. felsök och ta bort för att öppna ! 
+        - Tog bort conn.close i update_postgres_data()
+
+        [] jag tror queryn är fel, den hämtar all data från NORAD_CAT_ID 20000 jsut nu så då börajr iterationen om från den och avbryts kanske när den hittar uppdatering.? 
+        # /class/gp/decay_date/null-val/epoch/%3Enow-30/orderby/norad_cat_id/format/json
+
+
+    [] Ett problem är att den inte tycks updatera i databasen. Hur kan jag ta reda på det? 

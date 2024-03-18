@@ -1,0 +1,4 @@
+
+# This file will list all the Python dependencies required for your project. 
+# You can generate this file using ==pip freeze > requirements.txt== after installing necessary packages.
+
