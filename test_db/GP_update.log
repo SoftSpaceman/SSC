@@ -1,0 +1,20 @@
+2024-03-22 15:23:13,688 - INFO - Login successful
+2024-03-22 15:23:16,624 - INFO - Data fetched successfully
+2024-03-22 15:23:25,643 - INFO - Data insertion into PostgreSQL successful.
+2024-03-22 15:23:25,643 - INFO - Database connection closed.
+2024-03-22 15:23:25,643 - INFO - Number of objects updated in database: 26000
+2024-03-24 12:28:33,469 - INFO - Login successful
+2024-03-24 12:28:37,513 - INFO - Data fetched successfully
+2024-03-24 12:28:46,806 - INFO - Data insertion into PostgreSQL successful.
+2024-03-24 12:28:46,806 - INFO - Database connection closed.
+2024-03-24 12:28:46,806 - INFO - Number of objects updated in database: 25996
+2024-03-24 16:11:36,725 - INFO - Login successful
+2024-03-24 16:11:39,840 - INFO - Data fetched successfully
+2024-03-24 16:11:47,235 - INFO - Data insertion into PostgreSQL successful.
+2024-03-24 16:11:47,235 - INFO - Database connection closed.
+2024-03-24 16:11:47,235 - INFO - Number of objects updated in database: 25996
+2024-03-24 18:46:28,436 - INFO - Login successful
+2024-03-24 18:46:31,231 - INFO - Data fetched successfully
+2024-03-24 18:46:39,160 - INFO - Data insertion into PostgreSQL successful.
+2024-03-24 18:46:39,160 - INFO - Database connection closed.
+2024-03-24 18:46:39,160 - INFO - Number of objects updated in database: 25996

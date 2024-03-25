@@ -3,25 +3,57 @@
 
 # QUESTIONS: 
 # IS thera a point to fit the tabel creation queries in the create_database() function?
-# so far we are going to put it in db_functions.py
+# so far we are going to put it in the create_tables() function.
 
+import os
 import psycopg2
 import configparser
 
 
-config = configparser.ConfigParser()
-config.read(r'C:\Users\Bananberg\Desktop\Space_info\SSC\projects\SSC_database\test_db\database\database_config.ini')
+# config = configparser.ConfigParser()
+# config.read(r'C:\Users\Bananberg\Desktop\Space_info\SSC\projects\SSC_database\test_db\database\database_config.ini')
 
-host = config.get("database","host")
-dbname = config.get('database', 'dbname')
-user = config.get('database', 'user')
-password = config.get('database', 'password')
-port = config.get('database', 'port')
+# host = config.get("database","host")
+# dbname = config.get('database', 'dbname')
+# user = config.get('database', 'user')
+# password = config.get('database', 'password')
+# port = config.get('database', 'port')
+
 
 
 
 
 def create_database():
+
+ ############################################################################################################
+    # Get the directory path of the current script
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+
+    # Navigate to the parent directory (one level up from the current script directory)
+    parent_dir = os.path.dirname(script_dir)
+
+    # Construct the path to the config directory
+    config_dir = os.path.join(parent_dir, 'config')
+
+    # Construct the full path to the config.ini file
+    config_file_path = os.path.join(config_dir, 'config.ini')
+
+    # Initialize config parser
+    config = configparser.ConfigParser()
+
+    # Read the configuration file
+    config.read(config_file_path)
+
+    # Get database connection parameters
+    host = config.get('database', 'host')
+    dbname = config.get('database', 'dbname')
+    user = config.get('database', 'user')
+    password = config.get('database', 'password')
+    port = config.get('database', 'port')
+
+ ############################################################################################################
+
+
 
     try:
         # Connect to the default 'postgres' database to create a new database
@@ -43,7 +75,7 @@ def create_database():
         cursor = conn.cursor()
 
         # Execute SQL query to create a new database
-        cursor.execute("CREATE DATABASE gpdata_with_history")
+        cursor.execute("CREATE DATABASE gpdata") # gpdata_with_history
 
         print("Database created successfully!")
 

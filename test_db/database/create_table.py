@@ -1,25 +1,57 @@
 # this script workes just fine! The databse has been successfully created. 01/03/2024
 # the original file wa meant to be named database_functions.py Byt had to be renamed to create_tables.py
 
+
+import os
 import psycopg2
 import configparser
 
 
 
 
-config = configparser.ConfigParser()
-config.read(r'C:\Users\Bananberg\Desktop\Space_info\SSC\projects\SSC_database\test_db\database\database_config.ini')
+# config = configparser.ConfigParser()
+# config.read(r'C:\Users\Bananberg\Desktop\Space_info\SSC\projects\SSC_database\test_db\database\database_config.ini')
 
-host = config.get("tables","host")
-dbname = config.get('tables', 'dbname')
-user = config.get('tables', 'user')
-password = config.get('tables', 'password')
-port = config.get('tables', 'port')
-
+# host = config.get("tables","host")
+# dbname = config.get('tables', 'dbname')
+# user = config.get('tables', 'user')
+# password = config.get('tables', 'password')
+# port = config.get('tables', 'port')
 
 
 
 def create_tables():
+
+
+    # Get the directory path of the current script
+    script_dir = os.path.dirname(os.path.realpath(__file__))
+
+    # Navigate to the parent directory (one level up from the current script directory)
+    parent_dir = os.path.dirname(script_dir)
+
+    # Construct the path to the config directory
+    config_dir = os.path.join(parent_dir, 'config')
+
+    # Construct the full path to the config.ini file
+    config_file_path = os.path.join(config_dir, 'config.ini')
+
+    # Initialize config parser
+    config = configparser.ConfigParser()
+
+    # Read the configuration file
+    config.read(config_file_path)
+
+    # Get database connection parameters
+    host = config.get('tables', 'host')
+    dbname = config.get('tables', 'dbname')
+    user = config.get('tables', 'user')
+    password = config.get('tables', 'password')
+    port = config.get('tables', 'port')
+
+
+
+
+
     try:
         # Connect to the database
         conn = psycopg2.connect(
@@ -50,8 +82,8 @@ def create_tables():
         table_queries = [
         """
             CREATE TABLE gp_file (
-                id SERIAL UNIQUE,
-                NORAD_CAT_ID INT PRIMARY KEY,  -- Removed unsigned
+                id SERIAL PRIMARY KEY,
+                NORAD_CAT_ID INT UNIQUE,  -- Removed unsigned
                 modification_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 CCSDS_OMM_VERS varchar(3),
                 COMMENT varchar(33),

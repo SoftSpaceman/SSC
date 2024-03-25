@@ -76,3 +76,49 @@ i **update.py** det fungerar att hämta och printa ut det som det ska i terminal
 
 
     [] Ett problem är att den inte tycks updatera i databasen. Hur kan jag ta reda på det? 
+
+
+
+
+
+
+**checkpoint**
+
+Vad vi vet: 
+    update_new.py updaterar data. 
+        Vilken data vet vi inte... Det skulle lika gäran kunna vara bara timestamp
+            MEN scriptet säger att den hämtar olika mängder för varje körning av skriptet. 
+                NÄSTAN. Om skriptet körs samma dag med någon timmes intervall hämtas samma mängd och updateras.. alltså samma värde för samma objekt 
+                hämtas och skrivs över i databasen eftersom inget skript finns som chekar om datan som hämtas redan finns i databasen. Den skriver bara över samma data helt enkelt. 
+
+                MEN varför hämtar den olika mängder data? (kolla loggen)
+                
+                    2024-03-21 17:24:48,387 - INFO - Data insertion into PostgreSQL successful.
+                    2024-03-21 17:24:48,387 - INFO - Database connection closed.
+                    2024-03-21 17:24:48,387 - INFO - Number of objects updated in database: 25985
+                    2024-03-21 17:27:11,348 - INFO - Login successful
+                    2024-03-21 17:27:14,432 - INFO - Data fetched successfully
+                    2024-03-21 17:27:23,902 - INFO - Data insertion into PostgreSQL successful.
+                    2024-03-21 17:27:23,903 - INFO - Database connection closed.
+                    2024-03-21 17:27:23,903 - INFO - Number of objects updated in database: 25985
+                    2024-03-22 10:00:54,429 - INFO - Login successful
+                    2024-03-22 10:00:57,405 - INFO - Data fetched successfully
+                    2024-03-22 10:01:06,653 - INFO - Data insertion into PostgreSQL successful.
+                    2024-03-22 10:01:06,653 - INFO - Database connection closed.
+                    2024-03-22 10:01:06,653 - INFO - Number of objects updated in database: 26001
+                    2024-03-22 14:16:22,696 - INFO - Login successful
+                    2024-03-22 14:16:26,255 - INFO - Data fetched successfully
+                    2024-03-22 14:16:35,318 - INFO - Data insertion into PostgreSQL successful.
+                    2024-03-22 14:16:35,318 - INFO - Database connection closed.
+                    2024-03-22 14:16:35,318 - INFO - Number of objects updated in database: 26000
+                    2024-03-22 15:18:46,886 - INFO - Login successful
+                    2024-03-22 15:18:50,302 - INFO - Data fetched successfully
+                    2024-03-22 15:19:00,700 - INFO - Data insertion into PostgreSQL successful.
+                    2024-03-22 15:19:00,700 - INFO - Database connection closed.
+                    2024-03-22 15:19:00,700 - INFO - Number of objects updated in database: 26000
+                LOGGEN ÄR ÅTERSTÄLLD OCH DETTA ÄR HISTORIA. 
+
+
+                loggen säger att antal data har hämtast och updaterats i databasen 
+                    MEN om vi kollar i databsen via DBever så finns bara fåtalet TIMESTAMP registerade med olika antal coresponderadne data. INTERSSANT! 
+                    STORLEKEN i MB har inte heller ökat efter de senaste updateringarna idag 22/03/24

@@ -19,7 +19,8 @@
 
 
 # my_project/
-# ├── main.py
+# ├──Scripts/
+# │   └── main.py
 # └── database/
 #     ├── __init__.py
 #     └── create_table.py
@@ -27,17 +28,9 @@
 
 
 ############# SCRIPT TO SUMMON ALL FNCTIONS FROM DIFFERENT MODULES in ONE FUNCTION.
-# # database/create_db.py
-# def create_database():
-#     # Implementation for creating a database
 
-# # database/create_table.py
-# def create_tables():
-#     # Implementation for creating tables
-
-# # main.py
-# from .database.create_db import create_database
-# from .database.create_table import create_tables
+# from database import create_database
+# from database import create_tables
 
 # def main():
 #     create_database()
@@ -50,39 +43,22 @@
 
 
 
-
-
 from database.create_db import create_database
 from database.create_table import create_tables
-
 
 #________________________________________________________________
 #A function to call on the funtion to creat the database.
 def main():
     # call function from database/create_database.py >> create_database()
     create_database()
+    create_tables()
+
 if __name__ == "__main__":
     main()
 
 # to use this, open terminal and navigat eto the directory where the main.py
     # file is located and run the following command: python main.py
 #________________________________________________________________
-
-
-
-
-
-
-
-#________________________________________________________________
-# A FUNCTION TO CALL ON THE create_table.py >> create_tables()
-
-def main():
-    # Call functions from different modules as needed
-    create_tables()
-
-if __name__ == "__main__":
-    main()
 
 # to use this, open terminal and navigat eto the directory where the main.py
     # file is located and run the following command: python main.py
