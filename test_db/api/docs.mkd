@@ -122,3 +122,48 @@ Vad vi vet:
                 loggen säger att antal data har hämtast och updaterats i databasen 
                     MEN om vi kollar i databsen via DBever så finns bara fåtalet TIMESTAMP registerade med olika antal coresponderadne data. INTERSSANT! 
                     STORLEKEN i MB har inte heller ökat efter de senaste updateringarna idag 22/03/24
+
+
+
+**DATUM: 25/02/24**
+**uppdrag**
+Skapa en ny datbas
+[X]  Ny databas gpdata2 
+[ ] Query gp_history på spacetrack query builder. 
+    [X] Query the gp_history. 
+    Just make a query work with data from one object 2 days back in time. 
+    [X] 10 days back in time. 
+
+[ ] Mata gp_history med data för alla NORAD_CAT_ID 2 dagar bak i tiden. 
+
+
+
+
+**uppdrag**
+[ ] Logik för sparining av historisk data till gp_history innan update. 
+    [ ] transfer data from gp  >  gp_history. 
+        Potential logic: 
+            data fron gp  > gp_history 
+            ny data  >  gp 
+            REPEAT.
+
+
+**queryn som update_new.py använder.** 
+/class/gp/decay_date/null-val/epoch/%3Enow-30/orderby/norad_cat_id/format/json
+ this query fetches information about satellites' orbital parameters from the Space-Track API. 
+ It specifically targets active satellites (those that have not yet decayed from orbit) 
+ with epochs ***within*** the last 30 days and orders the retrieved data by their NORAD Catalog ID, returning the results in JSON format.
+
+
+**checkpoint**
+Denna query: https://www.space-track.org/basicspacedata/query/class/gp_history/EPOCH/%3Enow-2/orderby/NORAD_CAT_ID%20asc/limit/10/emptyresult/show
+Hämtar data från gp_history
+med Epoch från idag och 2 dagar bakåt. sorterat efter NORAD_CAT_ID och begräsnat till 10 stycken NORAD. 
+
+
+This query: https://www.space-track.org/basicspacedata/query/class/gp_history/EPOCH/%3Enow-2/orderby/NORAD_CAT_ID%20asc/emptyresult/show
+Hämtar data från gp_history 
+med epoch från idag och 2 dagar bakåt. Sorterar efter NORAD_CAT_ID utan begräsning. ( alltså borde den hämta 58,000 obejkt x2 )
+
+
+**RENAMED update_new.py to update_gpdata.py**

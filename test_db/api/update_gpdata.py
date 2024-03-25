@@ -30,6 +30,12 @@ siteCred = {'identity': api_username, 'password': api_password}
 requestGPdata = f'/class/gp/decay_date/null-val/epoch/%3Enow-30/orderby/norad_cat_id/format/json'
 
 
+#The recommended URL for retrieving the newest propagable element set for all on-orbit objects is:
+# /class/gp/decay_date/null-val/epoch/%3Enow-30/orderby/norad_cat_id/format/json
+
+
+
+
 
 # Get database connection parameters
 host = config.get('tables', 'host')
