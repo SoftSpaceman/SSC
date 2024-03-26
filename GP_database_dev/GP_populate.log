@@ -1,0 +1,85 @@
+2024-03-21 14:34:26,964 - INFO - Sending request to: https://www.space-track.org/ajaxauth/login
+2024-03-21 14:34:26,964 - INFO - Request method: POST
+2024-03-21 14:34:28,196 - INFO - Login successful
+2024-03-21 14:34:28,197 - INFO - Sending request to: https://www.space-track.org/basicspacedata/query/class/gp/orderby/NORAD_CAT_ID%20asc/emptyresult/show
+2024-03-21 14:34:28,197 - INFO - Request method: GET
+2024-03-21 14:34:36,193 - INFO - Data fetched successfully
+2024-03-21 14:34:36,193 - INFO - Data size: 65652927 bytes
+2024-03-21 14:34:36,193 - INFO - Time taken for login: 0:00:09.228385
+2024-03-21 14:34:36,193 - INFO - Time taken for fetching data: 0:00:07.996045
+2024-03-21 14:34:51,825 - INFO - Data insertion into PostgreSQL successful.
+2024-03-21 14:34:51,827 - INFO - Database connection closed.
+2024-03-21 14:34:51,827 - INFO - Number of objects inserted: 57835
+2024-03-21 15:35:26,020 - INFO - Sending request to: https://www.space-track.org/ajaxauth/login
+2024-03-21 15:35:26,020 - INFO - Request method: POST
+2024-03-21 15:35:27,185 - INFO - Login successful
+2024-03-21 15:35:27,185 - INFO - Sending request to: https://www.space-track.org/basicspacedata/query/class/gp/orderby/NORAD_CAT_ID%20asc/emptyresult/show
+2024-03-21 15:35:27,185 - INFO - Request method: GET
+2024-03-21 15:35:34,479 - INFO - Data fetched successfully
+2024-03-21 15:35:34,479 - INFO - Data size: 65652759 bytes
+2024-03-21 15:35:34,479 - INFO - Time taken for login: 0:00:08.458970
+2024-03-21 15:35:34,479 - INFO - Time taken for fetching data: 0:00:07.293862
+2024-03-21 15:35:50,636 - INFO - Data insertion into PostgreSQL successful.
+2024-03-21 15:35:50,636 - INFO - Database connection closed.
+2024-03-21 15:35:50,636 - INFO - Number of objects inserted: 57835
+2024-03-21 16:30:00,371 - INFO - Sending request to: https://www.space-track.org/ajaxauth/login
+2024-03-21 16:30:00,371 - INFO - Request method: POST
+2024-03-21 16:30:01,619 - INFO - Login successful
+2024-03-21 16:30:01,619 - INFO - Sending request to: https://www.space-track.org/basicspacedata/query/class/gp/orderby/NORAD_CAT_ID%20asc/emptyresult/show
+2024-03-21 16:30:01,619 - INFO - Request method: GET
+2024-03-21 16:30:09,343 - INFO - Data fetched successfully
+2024-03-21 16:30:09,343 - INFO - Data size: 65652010 bytes
+2024-03-21 16:30:09,343 - INFO - Time taken for login: 0:00:08.972297
+2024-03-21 16:30:09,343 - INFO - Time taken for fetching data: 0:00:07.724531
+2024-03-21 16:30:25,572 - INFO - Data insertion into PostgreSQL successful.
+2024-03-21 16:30:25,572 - INFO - Database connection closed.
+2024-03-21 16:30:25,572 - INFO - Number of objects inserted: 57835
+2024-03-21 16:33:37,887 - INFO - Sending request to: https://www.space-track.org/ajaxauth/login
+2024-03-21 16:33:37,887 - INFO - Request method: POST
+2024-03-21 16:33:39,611 - INFO - Login successful
+2024-03-21 16:33:39,611 - INFO - Sending request to: https://www.space-track.org/basicspacedata/query/class/gp/orderby/NORAD_CAT_ID%20desc/emptyresult/show
+2024-03-21 16:33:39,611 - INFO - Request method: GET
+2024-03-21 16:33:47,146 - INFO - Data fetched successfully
+2024-03-21 16:33:47,146 - INFO - Data size: 65652010 bytes
+2024-03-21 16:33:47,146 - INFO - Time taken for login: 0:00:09.258316
+2024-03-21 16:33:47,146 - INFO - Time taken for fetching data: 0:00:07.534554
+2024-03-21 16:34:03,177 - INFO - Data insertion into PostgreSQL successful.
+2024-03-21 16:34:03,177 - INFO - Database connection closed.
+2024-03-21 16:34:03,177 - INFO - Number of objects inserted: 57835
+2024-03-21 16:50:41,547 - INFO - Sending request to: https://www.space-track.org/ajaxauth/login
+2024-03-21 16:50:41,547 - INFO - Request method: POST
+2024-03-21 16:50:42,831 - INFO - Login successful
+2024-03-21 16:50:42,831 - INFO - Sending request to: https://www.space-track.org/basicspacedata/query/class/gp/orderby/NORAD_CAT_ID%20desc/emptyresult/show
+2024-03-21 16:50:42,831 - INFO - Request method: GET
+2024-03-21 16:50:50,853 - INFO - Data fetched successfully
+2024-03-21 16:50:50,853 - INFO - Data size: 65652010 bytes
+2024-03-21 16:50:50,853 - INFO - Time taken for login: 0:00:09.306633
+2024-03-21 16:50:50,853 - INFO - Time taken for fetching data: 0:00:08.022623
+2024-03-21 16:51:08,025 - INFO - Data insertion into PostgreSQL successful.
+2024-03-21 16:51:08,026 - INFO - Database connection closed.
+2024-03-21 16:51:08,026 - INFO - Number of objects inserted: 57835
+2024-03-21 16:53:09,712 - INFO - Sending request to: https://www.space-track.org/ajaxauth/login
+2024-03-21 16:53:09,712 - INFO - Request method: POST
+2024-03-21 16:53:10,878 - INFO - Login successful
+2024-03-21 16:53:10,878 - INFO - Sending request to: https://www.space-track.org/basicspacedata/query/class/gp/orderby/NORAD_CAT_ID%20desc/emptyresult/show
+2024-03-21 16:53:10,878 - INFO - Request method: GET
+2024-03-21 16:53:18,394 - INFO - Data fetched successfully
+2024-03-21 16:53:18,394 - INFO - Data size: 65652010 bytes
+2024-03-21 16:53:18,394 - INFO - Time taken for login: 0:00:08.681509
+2024-03-21 16:53:18,394 - INFO - Time taken for fetching data: 0:00:07.515560
+2024-03-21 16:53:18,965 - ERROR - Error occurred while inserting data into PostgreSQL: duplicate key value violates unique constraint "gp_file_norad_cat_id_key"
+DETAIL:  Key (norad_cat_id)=(270288) already exists.
+
+2024-03-21 16:53:18,965 - INFO - Database connection closed.
+2024-03-25 09:13:51,347 - INFO - Sending request to: https://www.space-track.org/ajaxauth/login
+2024-03-25 09:13:51,348 - INFO - Request method: POST
+2024-03-25 09:13:52,543 - INFO - Login successful
+2024-03-25 09:13:52,543 - INFO - Sending request to: https://www.space-track.org/basicspacedata/query/class/gp/orderby/NORAD_CAT_ID%20desc/emptyresult/show
+2024-03-25 09:13:52,543 - INFO - Request method: GET
+2024-03-25 09:14:02,262 - INFO - Data fetched successfully
+2024-03-25 09:14:02,262 - INFO - Data size: 65678386 bytes
+2024-03-25 09:14:02,262 - INFO - Time taken for login: 0:00:10.914227
+2024-03-25 09:14:02,262 - INFO - Time taken for fetching data: 0:00:09.719707
+2024-03-25 09:14:20,328 - INFO - Data insertion into PostgreSQL successful.
+2024-03-25 09:14:20,343 - INFO - Database connection closed.
+2024-03-25 09:14:20,343 - INFO - Number of objects inserted: 57861
