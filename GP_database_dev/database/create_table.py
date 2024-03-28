@@ -1,6 +1,7 @@
 # this script workes just fine! The databse has been successfully created. 01/03/2024
 # the original file wa meant to be named database_functions.py Byt had to be renamed to create_tables.py
 
+# this is part of the creation of the database. phase. Step 2.
 
 import os
 import psycopg2

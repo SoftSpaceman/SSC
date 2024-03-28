@@ -53,3 +53,8 @@
 2024-03-27 12:05:21,973 - INFO - Data insertion into PostgreSQL successful.
 2024-03-27 12:05:21,973 - INFO - Database connection closed.
 2024-03-27 12:05:21,973 - INFO - Number of objects updated in database: 26024
+2024-03-28 13:07:19,041 - INFO - Login successful
+2024-03-28 13:07:22,943 - INFO - Data fetched successfully
+2024-03-28 13:07:33,085 - INFO - Data insertion into PostgreSQL successful.
+2024-03-28 13:07:33,099 - INFO - Database connection closed.
+2024-03-28 13:07:33,099 - INFO - Number of objects updated in database: 26027

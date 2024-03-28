@@ -1,5 +1,8 @@
 
 
+# This script is used to move data from the gp_file table to the gp_file_historical table in the database.
+#Part of the creation phase. Step 4. 
+
 
 
 import psycopg2

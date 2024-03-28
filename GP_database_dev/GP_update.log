@@ -1,0 +1,5 @@
+2024-03-28 13:09:17,677 - INFO - Login successful
+2024-03-28 13:09:21,410 - INFO - Data fetched successfully
+2024-03-28 13:09:30,971 - INFO - Data insertion into PostgreSQL successful.
+2024-03-28 13:09:30,971 - INFO - Database connection closed.
+2024-03-28 13:09:30,971 - INFO - Number of objects updated in database: 26027

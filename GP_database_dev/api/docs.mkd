@@ -204,7 +204,27 @@ Nästa steg är att updatera gp_file och sedan migrera uppdaterad datan till gp_
 2. create_table.py
 3. populate_gp_file.py
 4. populate_gp_file_historical.py
-INTE FÄRDIGT
 5. update_gpfile.py
 6  migration.py
-loop
+CHECKPOINT: såhär långt funkar allt.
+
+**Checkpoint**
+28/03/28
+Nu funkar lagringen av data i gp_file_history. 
+Logiken i den försat fasen(databas skapelse) är som följer. 
+
+
+## **CREATE DB PHASE**
+steg 1. create_db.py FUNKAR manuellt. 
+steg 2. create_table.py FUNKAR manuellt. 
+steg 3. populate_gp_file.py FUNKAR manuellt. 
+steg 4. populate_gp_file_historical.py FUNKAR manuellt. 
+
+
+## **MANUALLY MAINTAIN DB**
+steg 1. update_gpfile.py
+steg 2. migration.py 
+    - tar datan från gp_file.table >>> all data med dagens datum(modification_timstamp) >>> gp_file_history.table
+
+
+    

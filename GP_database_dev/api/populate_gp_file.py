@@ -1,4 +1,14 @@
 
+
+
+#Creation phase. step 3.
+
+# This file is complete. It populates the database in the first phase of the databse. The creation phase. 
+
+
+
+
+
 import os
 import requests
 import logging

@@ -1,4 +1,15 @@
 
+--gpdata2. database
+
+--gp_file. table 
+
+--gp_file_historical. table 
+
+
+
+
+
+
 -- Gives the entier table but without comment 
 SELECT id, norad_cat_id, modification_timestamp, creation_date, epoch, originator, object_name, object_id, center_name, ref_frame, time_system, mean_element_theory, mean_motion, eccentricity, inclination, ra_of_asc_node, arg_of_pericenter, mean_anomaly, ephemeris_type, classification_type, element_set_no, rev_at_epoch, bstar, mean_motion_dot, mean_motion_ddot, semimajor_axis, "period", apoapsis, periapsis, object_type, rcs_size, country_code, launch_date, site, decay_date, file, gp_id, tle_line0, tle_line1, tle_line2
 FROM public.gp_file;
@@ -15,6 +26,18 @@ SELECT
    COUNT(DISTINCT norad_cat_id) AS unique_rows
 FROM
    public.gp_file;
+
+
+-- This query will return all columns for the row(s) where the NORAD_CAT_ID matches the specified value.
+SELECT *
+FROM gp_file
+WHERE NORAD_CAT_ID = your_desired_NORAD_CAT_ID;
+
+-- This query will return all columns for the row where the id matches the specified value.
+SELECT *
+FROM gp_file
+WHERE id = your_desired_id;
+
 
 
 
@@ -41,16 +64,6 @@ GROUP BY DATE_TRUNC('minute', modification_timestamp)
 ORDER BY modification_time;
 
 
-
--- This query will return all columns for the row(s) where the NORAD_CAT_ID matches the specified value.
-SELECT *
-FROM gp_file
-WHERE NORAD_CAT_ID = your_desired_NORAD_CAT_ID;
-
--- This query will return all columns for the row where the id matches the specified value.
-SELECT *
-FROM gp_file
-WHERE id = your_desired_id;
 
 
 
