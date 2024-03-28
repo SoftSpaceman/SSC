@@ -82,7 +82,7 @@ def create_tables():
         table_queries = [
         """
             CREATE TABLE gp_file (
-                id SERIAL PRIMARY KEY,
+                gp_file_id SERIAL PRIMARY KEY,
                 NORAD_CAT_ID INT UNIQUE,  -- Removed unsigned
                 modification_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 CCSDS_OMM_VERS varchar(3),
@@ -129,7 +129,7 @@ def create_tables():
 
         CREATE TABLE gp_file_historical (
             history_id SERIAL PRIMARY KEY,
-            gp_file_id INT REFERENCES gp_file(id),
+            gp_file_id INT REFERENCES gp_file(gp_file_id),
             NORAD_CAT_ID INT,
             modification_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,      -- the time the data from gp_file got stored in the history table
             CCSDS_OMM_VERS varchar(3),

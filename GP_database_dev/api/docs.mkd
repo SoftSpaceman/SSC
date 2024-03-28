@@ -153,7 +153,7 @@ Skapa en ny datbas
  this query fetches information about satellites' orbital parameters from the Space-Track API. 
  It specifically targets active satellites (those that have not yet decayed from orbit) 
  with epochs ***within*** the last 30 days and orders the retrieved data by their NORAD Catalog ID, returning the results in JSON format.
-
+https://chat.openai.com/share/d80728d1-f30d-4ad4-9b6c-fe2d1d55ea54
 
 **checkpoint**
 Denna query: https://www.space-track.org/basicspacedata/query/class/gp_history/EPOCH/%3Enow-2/orderby/NORAD_CAT_ID%20asc/limit/10/emptyresult/show
@@ -177,7 +177,34 @@ Precis innan en updatering görs, hämtar historiska data tabellen data från de
 Den aktuella databasen gör en updatering via API:et. 
 
 
-
+# lÖST 27/03/24 
+### datan måste kopieras från gp_file och matas in i gp_file_historical och id måste specificerat. 
 Båda tables i gpdata2 är populerade. 
     Förstår inte NULL values i gp_file_id columnen. Kan ha och göra med hur datan lades in, i vilken ordning osv. 
 Nästa steg är att updatera gp_file och sedan migrera uppdaterad datan till gp_file_history
+
+
+
+**27/03/24** 
+    Okej så att först insert i gp_file 
+    och sedna insert gp_file_history utelämnar forigen key constraints.
+
+        LOGIKEN VID SKAPANDET AV DB 
+        Först skapas databsen. create_db.py 
+        skapa tabels. create_table.py
+        Mata gp_file(parent table) populate_gp_file.py
+        Kopiera data från gp_file till gp_file_historical 
+        Updatera gp_file 
+        Kopiera data från gp_file med condition datum till gp_file_historical 
+        updatera gp_file 
+        loop
+
+## STEGEN I SKAPELSEFASEN. 
+1. create_db.py
+2. create_table.py
+3. populate_gp_file.py
+4. populate_gp_file_historical.py
+INTE FÄRDIGT
+5. update_gpfile.py
+6  migration.py
+loop

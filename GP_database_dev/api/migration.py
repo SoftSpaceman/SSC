@@ -1,22 +1,17 @@
-import psycopg2
-from psycopg2 import sql
 
 
 
 
 
+# detta är alltså vad som ska köras för att kopiera data från en tabell till en annan
+#gp_file  >  gp_file_historical.
+# detta gör efter att gp_file har populerats och kommer sanorlikt bara köras en gång. 
 
+# Tanken är (logiken) att innan gp_file uppdareas så ska gp_file_historical uppdateras med datan baserat på ett kondition. 
+# dagens datum. för att bara hämta datan som den själv inte har. 
 
-# Database connection parameters
-DB_HOST = "your_database_host"
-DB_NAME = "your_database_name"
-DB_USER = "your_database_user"
-DB_PASSWORD = "your_database_password"
-
-
-
-
-
+# säg att båda tabellerna har updateras med samma query när de först skapas. 
+# Då vill jag ju inte att gp_file_historical ska uppdateras med all data från gp_file igen eftersom all data inte updateras i gp_file när det ska köras automatiskt. 
 
 
 
@@ -25,59 +20,100 @@ DB_PASSWORD = "your_database_password"
 
 
 
-# Define the trigger function SQL
-trigger_function_sql = """
-CREATE OR REPLACE FUNCTION move_to_historical()
-RETURNS TRIGGER AS $$
-BEGIN
-    -- Move updated rows to historical table
-    INSERT INTO historical_data (data_column, created_at)
-    VALUES (NEW.data_column, NEW.created_at);
+
+
+
+# import psycopg2
+# from psycopg2 import Error
+
+# Function to fetch data from source table and insert into target table
+# def copy_data(source_table, target_table):
+#     try:
+#         Connect to your PostgreSQL database
+#         connection = psycopg2.connect(
+#             host = "localhost",
+#             dbname = "postgres",
+#             user = "postgres",
+#             password = "172121D",
+#             port = "5432"
+#         )
+        
+#         cursor = connection.cursor()
+
+#         Fetch data from source table
+#         cursor.execute(f"SELECT * FROM {source_table}")
+#         rows = cursor.fetchall()
+
+#         Insert fetched data into target table
+#         for row in rows:
+#             cursor.execute(f"INSERT INTO {target_table} VALUES (%s, %s, %s)", row)
+
+#         Commit changes
+#         connection.commit()
+#         print("Data copied successfully!")
+
+#     except (Exception, Error) as error:
+#         print("Error:", error)
     
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
-"""
+#     finally:
+#         if connection:
+#             cursor.close()
+#             connection.close()
+#             print("PostgreSQL connection is closed")
 
-# Define the trigger SQL
-trigger_sql = """
-CREATE TRIGGER data_update_trigger
-AFTER INSERT OR UPDATE ON new_data
-FOR EACH ROW
-EXECUTE FUNCTION move_to_historical();
-"""
-
+# Example usage
+# if __name__ == "__main__":
+#     source_table = "gp_file"
+#     target_table = "gp_file_historical"
+#     copy_data(source_table, target_table)
 
 
 
 
+import psycopg2
+from psycopg2 import Error
+from datetime import datetime
 
+# Function to fetch data from source table based on a condition and insert into target table
+def copy_data_with_condition(source_table, target_table):
+    try:
+        # Connect to your PostgreSQL database
+        connection = psycopg2.connect(
+            host = "localhost",
+            dbname = "gpdata2",
+            user = "postgres",
+            password = "172121D",
+            port = "5432"
+        )
+        
+        cursor = connection.cursor()
 
+        # Get today's date
+        today_date = datetime.now().date()
 
+        # Fetch data from source table based on condition (e.g., date column matching today's date)
+        cursor.execute(f"SELECT * FROM {source_table} WHERE date_column = %s", (today_date,))
+        rows = cursor.fetchall()
 
+        # Insert fetched data into target table
+        for row in rows:
+            cursor.execute(f"INSERT INTO {target_table} VALUES (%s, %s, %s)", row)
 
+        # Commit changes
+        connection.commit()
+        print("Data copied successfully!")
 
+    except (Exception, Error) as error:
+        print("Error:", error)
+    
+    finally:
+        if connection:
+            cursor.close()
+            connection.close()
+            print("PostgreSQL connection is closed")
 
-# Connect to the database
-try:
-    conn = psycopg2.connect(
-        dbname=DB_NAME, user=DB_USER, password=DB_PASSWORD, host=DB_HOST
-    )
-    cursor = conn.cursor()
-
-    # Create trigger function
-    cursor.execute(trigger_function_sql)
-
-    # Create trigger
-    cursor.execute(trigger_sql)
-
-    # Commit the transaction
-    conn.commit()
-    print("Trigger created successfully.")
-
-except psycopg2.Error as e:
-    print("Error:", e)
-
-finally:
-    if conn is not None:
-        conn.close()
+# Example usage
+if __name__ == "__main__":
+    source_table = "gp_file"
+    target_table = "gp_file_historical"
+    copy_data_with_condition(source_table, target_table)

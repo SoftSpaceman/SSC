@@ -70,7 +70,7 @@ def store_data_in_postgresql(data):
                 raise e
            
         conn.commit()
-        logging.info("Data insertion into PostgreSQL successful.")
+        logging.info("Data insertion into PostgreSQL database gp_file, successful!")
     except (Exception, psycopg2.DatabaseError) as error:
         logging.error("Error occurred while inserting data into PostgreSQL: %s", error)
 
