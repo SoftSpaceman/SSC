@@ -227,4 +227,11 @@ steg 2. migration.py
     - tar datan från gp_file.table >>> all data med dagens datum(modification_timstamp) >>> gp_file_history.table
 
 
+CHECKPOINT 
+Jag återställer databasen och börjar i Ny mapp. Alltså en kopia av gp_database_dev
+    Målet är att automatisera dessa system nu. 
+    Målet är också att merga de är tre mapparna i file GPdatabas. 
+
+    Målet är att lägga till logging i migration.py!
     
+     
