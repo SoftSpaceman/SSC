@@ -53,7 +53,7 @@ port = config.get('tables', 'port')
 
 
 # Set up logging
-logging.basicConfig(filename='GP_update.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename='GP_update_dev.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Read configuration from file
 config = configparser.ConfigParser()
