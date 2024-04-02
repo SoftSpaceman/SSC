@@ -22,8 +22,8 @@ import logging
 
 
 # Configure logging
-log_file = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'logfile.log')
-logging.basicConfig(filename=log_file, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s - %(filename)s - line: %(lineno)d')
+log_file = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'GP_update_and_migrate.log')
+logging.basicConfig(filename=log_file, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(filename)s - line: %(lineno)d - %(message)s')
 
 # Your credentials are stored in directory config and file named config.ini.
 # These are needed to log in to the space-track.org RESTful service.

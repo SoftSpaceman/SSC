@@ -232,6 +232,47 @@ Jag återställer databasen och börjar i Ny mapp. Alltså en kopia av gp_databa
     Målet är att automatisera dessa system nu. 
     Målet är också att merga de är tre mapparna i file GPdatabas. 
 
-    Målet är att lägga till logging i migration.py!
+[X] Målet är att lägga till logging i migration.py!
     
-     
+Tank på: 
+Ändra på queryn så den hämtar data från 2 dagar tillbaka. 
+
+
+
+**CHeckpoint**
+**29/03/24**
+Nu funkar updateringen. 
+
+Först skapar jag databasen med main() i database/ 
+    databasen skapat med tables och matas med grund data. 
+
+Manuellt kör jag update_gpfile.py 
+och sedan migration.py 
+**idag 29/03/24**
+
+Tanken är att sätta upp en automatisk körning av: 
+Först:
+    migration.py - för datan behöver flyttas från det aktuella tabellen innan den uppdateras. 
+        migrations scriptet ska ta all data som senast matats in, det försäkrar att det inte blir dubletter i samma dag. 
+
+Sedan: 
+    update_gpfile.py - som får nyaste datan igen. 
+
+Frågor: 
+Hur många gånger ska datan updateras?   
+    Vilken tid!? 
+
+Efter att ha kört migration.py manuellt blir datan i gp_file_history lite mindre än i gp_file ca 1mb mindre, varför? 
+
+Efter uppdatering av gp_file med update_gpfile.py kort efter försat populationen av databasen. Ändras datan i databsen enligt tidtabbellen modification timestamp. 
+    Detta kan vara för att scriptet upptäcker förändring i timstamp bara och på så sätt uppdaterar. 
+
+
+MÅL: 
+Få databasen gpdata2 att köras av sig själv. 
+Kopiera mappen och finsjustera med en ny testdatabas utan att påverka gpdata2 
+
+Undersök HASHING.! 
+
+
+ATT göra! 02/04/24
