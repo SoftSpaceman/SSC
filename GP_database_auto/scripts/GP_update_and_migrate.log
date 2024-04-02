@@ -28,3 +28,10 @@ update_gpfile.py - line: 78 - 2024-03-31 21:59:31,732 - INFO - Number of objects
 2024-04-01 20:17:59,089 - INFO - update_gpfile.py - line: 144 - Data insertion into PostgreSQL successful.
 2024-04-01 20:17:59,091 - INFO - update_gpfile.py - line: 149 - Database connection closed.
 2024-04-01 20:17:59,091 - INFO - update_gpfile.py - line: 78 - Number of objects updated in database: 26024
+2024-04-02 11:29:11,774 - INFO - migration.py - line: 159 - Data moved successfully.
+2024-04-02 11:29:11,775 - INFO - migration.py - line: 167 - Database connection closed.
+2024-04-02 11:29:18,308 - INFO - update_gpfile.py - line: 95 - Login successful
+2024-04-02 11:29:21,196 - INFO - update_gpfile.py - line: 100 - Data fetched successfully
+2024-04-02 11:29:30,857 - INFO - update_gpfile.py - line: 144 - Data insertion into PostgreSQL successful.
+2024-04-02 11:29:30,857 - INFO - update_gpfile.py - line: 149 - Database connection closed.
+2024-04-02 11:29:30,857 - INFO - update_gpfile.py - line: 78 - Number of objects updated in database: 26053

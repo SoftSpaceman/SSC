@@ -39,6 +39,12 @@ FROM gp_file
 WHERE id = your_desired_id;
 
 
+-- This query shows how many rows have the same NORAD_CAT_ID.
+SELECT NORAD_CAT_ID, COUNT(*) AS count
+FROM gp_file
+GROUP BY NORAD_CAT_ID
+HAVING COUNT(*) > 1;
+
 
 
 -- This query will count the number of NORAD_CAT_ID for each modification_timestamp, grouping them by date. 

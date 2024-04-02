@@ -275,4 +275,21 @@ Kopiera mappen och finsjustera med en ny testdatabas utan att påverka gpdata2
 Undersök HASHING.! 
 
 
-ATT göra! 02/04/24
+## **STATUS 02/04/24**
+
+**Updateringen av databasen går nu att styra manuellt.**
+    * migration.py - tar datan från gp_file > gp_file_history med condition (data.now)(dagens datum)
+        Så all data med dagens midification_timstamp hämtas till gp_file_historical. 
+
+**PROBLEM/UPDATERINGAR**
+    queryn är för bred.. bör nog bara se bakot en dag 24h ((now-1) i query språk) 
+        Detta för att undvika onödig hämtning av data som inte har uppdaterast. 
+            Den nuvarande queryn på now-30 dagar hämtar 26000 datapunkter plus minus några nya varje dag. 
+                Vi behvöer ju inte hämta data för 30 dagar bakåt i tiden om vi hämtar varje dag... 
+
+
+**TASKS 02/03/24**
+[ ] Automatisera nuvarande updaterings logik. 
+
+
+    
