@@ -1,0 +1,77 @@
+2024-04-02 15:21:54,445 - INFO - Database created successfully! - create_db.py - line: 62
+2024-04-02 15:22:07,181 - ERROR - Error while connecting to PostgreSQL: database "gpdata3" already exists
+ - create_db.py - line: 65
+2024-04-02 15:22:13,261 - ERROR - Error while connecting to PostgreSQL: database "gpdata3" already exists
+ - create_db.py - line: 65
+2024-04-02 15:22:25,711 - ERROR - Error while connecting to PostgreSQL: database "gpdata3" already exists
+ - create_db.py - line: 65
+2024-04-02 15:23:05,774 - INFO - Database created successfully! - create_db.py - line: 62
+2024-04-02 15:41:29,436 - INFO - Database created successfully! - create_db.py - line: 62
+2024-04-02 15:58:48,381 - INFO - Database created successfully! - create_db.py - line: 62
+2024-04-02 15:59:10,124 - ERROR - Error while connecting to PostgreSQL: syntax error at or near "UNSIGNED"
+LINE 7:             NORAD_CAT_ID INT UNSIGNED NOT NULL,
+                                     ^
+ - create_table.py - line: 131
+2024-04-02 15:59:34,630 - ERROR - Error while connecting to PostgreSQL: syntax error at or near "UNSIGNED"
+LINE 27:             ELEMENT_SET_NO SMALLINT UNSIGNED,
+                                             ^
+ - create_table.py - line: 131
+2024-04-02 16:00:00,490 - ERROR - Error while connecting to PostgreSQL: type "mediumint" does not exist
+LINE 28:             REV_AT_EPOCH MEDIUMINT,
+                                  ^
+ - create_table.py - line: 131
+2024-04-02 16:00:27,539 - INFO - Tables created successfully! - create_table.py - line: 128
+2024-04-02 16:01:04,166 - ERROR - Error while connecting to PostgreSQL: FATAL:  database "gpdata3" does not exist
+ - create_table.py - line: 131
+2024-04-02 16:01:11,717 - INFO - Database created successfully! - create_db.py - line: 62
+2024-04-02 16:01:15,218 - ERROR - Error while connecting to PostgreSQL: type "mediumint" does not exist
+LINE 28:             REV_AT_EPOCH MEDIUMINT,
+                                  ^
+ - create_table.py - line: 131
+2024-04-02 16:01:34,346 - INFO - Tables created successfully! - create_table.py - line: 128
+2024-04-02 16:15:33,465 - INFO - Database created successfully! - create_db.py - line: 62
+2024-04-02 16:15:36,239 - INFO - Tables created successfully! - create_table.py - line: 128
+2024-04-02 16:53:22,582 - INFO - Database created successfully! - create_db.py - line: 62
+2024-04-02 16:53:24,562 - INFO - Tables created successfully! - create_table.py - line: 128
+2024-04-02 17:09:52,356 - INFO - Database created successfully! - create_db.py - line: 62
+2024-04-02 17:09:54,790 - INFO - Tables created successfully! - create_table.py - line: 128
+2024-04-03 10:00:45,577 - INFO - Database created successfully! - create_db.py - line: 62
+2024-04-03 10:00:50,186 - INFO - Tables created successfully! - create_table.py - line: 128
+2024-04-03 11:20:50,068 - INFO - Database created successfully! - create_db.py - line: 62
+2024-04-03 11:21:14,649 - INFO - Tables created successfully! - create_table.py - line: 128
+2024-04-03 11:23:10,099 - INFO - Database created successfully! - create_db.py - line: 62
+2024-04-03 11:23:13,864 - ERROR - Error while connecting to PostgreSQL: syntax error at or near "UNIQUE"
+LINE 6:             data_hash UNIQUE VARCHAR(64),
+                              ^
+ - create_table.py - line: 131
+2024-04-03 11:28:51,799 - ERROR - Error while connecting to PostgreSQL: database "gpdata3" already exists
+ - create_db.py - line: 65
+2024-04-03 11:28:54,806 - ERROR - Error while connecting to PostgreSQL: syntax error at or near "UNIQUE"
+LINE 6:             data_hash UNIQUE VARCHAR(64),
+                              ^
+ - create_table.py - line: 131
+2024-04-03 11:30:55,875 - INFO - Tables created successfully! - create_table.py - line: 128
+2024-04-03 11:33:06,997 - INFO - Database created successfully! - create_db.py - line: 62
+2024-04-03 11:33:09,434 - INFO - Tables created successfully! - create_table.py - line: 128
+2024-04-03 12:14:22,449 - INFO - Database created successfully! - create_db.py - line: 62
+2024-04-03 12:14:25,348 - INFO - Tables created successfully! - create_table.py - line: 128
+2024-04-03 12:29:07,291 - INFO - Database created successfully! - create_db.py - line: 62
+2024-04-03 12:29:07,365 - INFO - Tables created successfully! - create_table.py - line: 128
+2024-04-03 12:49:19,299 - INFO - Database created successfully! - create_db.py - line: 62
+2024-04-03 12:49:19,375 - INFO - Tables created successfully! - create_table.py - line: 128
+2024-04-03 14:29:00,120 - INFO - Database created successfully! - create_db.py - line: 62
+2024-04-03 14:29:00,199 - INFO - Tables created successfully! - create_table.py - line: 128
+2024-04-03 15:07:43,060 - INFO - Database created successfully! - create_db.py - line: 62
+2024-04-03 15:07:43,141 - INFO - Tables created successfully! - create_table.py - line: 128
+2024-04-03 15:11:07,898 - INFO - Database created successfully! - create_db.py - line: 62
+2024-04-03 15:11:07,986 - INFO - Tables created successfully! - create_table.py - line: 128
+2024-04-03 16:44:14,759 - INFO - Database created successfully! - create_db.py - line: 62
+2024-04-03 16:44:14,839 - INFO - Tables created successfully! - create_table.py - line: 128
+2024-04-03 17:09:20,383 - INFO - Database created successfully! - create_db.py - line: 62
+2024-04-03 17:09:20,462 - INFO - Tables created successfully! - create_table.py - line: 128
+2024-04-03 17:15:12,735 - INFO - Database created successfully! - create_db.py - line: 62
+2024-04-03 17:15:12,813 - INFO - Tables created successfully! - create_table.py - line: 128
+2024-04-03 17:17:37,048 - INFO - Database created successfully! - create_db.py - line: 62
+2024-04-03 17:17:37,125 - INFO - Tables created successfully! - create_table.py - line: 128
+2024-04-03 17:25:11,352 - INFO - Database created successfully! - create_db.py - line: 62
+2024-04-03 17:25:11,441 - INFO - Tables created successfully! - create_table.py - line: 128

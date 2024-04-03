@@ -1,0 +1,77 @@
+# requriments
+
+
+**Checkpoint**
+
+The hasing is working with the insertion of the api data.. 
+I have now populated the databse with all NORAD without a decay-date. 
+
+I will now try to either make a new file that runs once every minute to update the database on hte contiditon timestamp. 
+    PROBLEMS? 
+        Is using a new hasfunction in another file, adding to the risk of duplicates? 
+
+
+## ABOUT HASLIB AND HASING 
+
+The likelihood of generating duplicate hashes using the hashlib library in Python or any other hashing algorithm primarily depends on the quality and characteristics of the hash function itself, as well as the nature of the input data.
+
+The hashlib library in Python provides interfaces to various secure hash and message digest algorithms. These algorithms, such as MD5, SHA-1, SHA-256, etc., are designed to produce unique hash values for different inputs. However, due to the finite range of hash values and the potential for collisions (different inputs producing the same hash value), there is always a theoretical possibility of generating duplicate hashes.
+
+For cryptographic hash functions like SHA-256, the probability of accidental collisions is exceedingly low, especially when the input data is sufficiently varied and randomly distributed.
+
+However, if you are concerned about the possibility of collisions, especially in scenarios where a large number of hashes are being generated, you can employ techniques like salting (adding unique random data to each input before hashing) or using longer hash functions to reduce the likelihood of collisions.
+
+In summary, while it's theoretically possible to generate duplicate hashes, the likelihood is extremely low with secure hash functions like those provided by hashlib.
+
+
+
+
+**checkpoint**
+The update.py script is the go to script right now. 
+    I have a consern that the script wont insert new data because of the hash... 
+        I am not sure the logic works, that beeing, as soon as the fetch function get new data and asignes a hash that hash is uniq.. ? 
+        Is this waterprofe and am I just overthinking it...  
+
+
+## ANYWAY 
+
+
+
+### FOR TOMORROW: 
+**Check this link to start the day:** https://chat.openai.com/share/fa32fb27-47c5-4e17-8d9f-9b257dade4cd
+**SCRIPTS THAT ARE RELEVANT**
+fetch_insert_auto.py 
+fetch_insert.py - works and can be used to try things or to populate without beeing stuck in a loop. 
+
+
+At the bottom thats where you are. 
+
+We hade aproblem with the script running without a stop so I asked for clean up of hte script and improvement. 
+**I think** start over fresh tomorow, sahve the script that works indefinitly but fix so you CAN terminte it befor moving on to testing the nimproved script.. 
+[ ] test teh improved scritp. 
+
+
+#### **also**
+Check if the update works. Does it add in new data? Duplciates? logging is working?
+
+## SOO..
+**what we have** 
+A database.
+    one table with hashes to define changes.. 
+
+A script that consatnly runs and inserts upddates if there is some.. 
+    Kind of.. I am not sure how it works yet... Time will tell. 
+
+**NOW**
+Create a UI. Probably with flask...
+https://chat.openai.com/share/ca5f327c-1004-4178-93f5-04894646553c
+At the end of this chat we talk about flask..  
+
+
+
+TODAYS TOMMOROW TASKTS 
+
+[ ] Make a sercheble funtion, UI probably.. or in consol... 
+[ ] Flagging function, to get notification on when a object has been updated with new data.. 
+[ ] Decay alert( kind of ) when data is more than 5 day old.. print statement... ? 
+[ ] Monitor update script to catch exat time of creation_date form Space.track. 
