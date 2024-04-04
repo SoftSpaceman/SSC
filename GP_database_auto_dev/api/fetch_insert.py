@@ -5,6 +5,8 @@
 # THIS INSERTIS INTO GPDATA2
 # the "population" script is used to fetch data from space-track.org and insert it into the gp table in the gpdata2 database.
 #######################################################################################################
+# TWO seperate scripts are needed, one that will populate the database with a lot of data ONCE 
+# and one that will populate the database with the latest data every minute. This beeign the fetch_insert_auto.py
 
 
 

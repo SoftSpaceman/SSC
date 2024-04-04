@@ -138,3 +138,14 @@ En paniklösning är att hämta data från gp_history från 5 dagar bakot för a
 Med gpdata2 och query i fetch_insert_auto_db2.py 
     Den skriv bara över varje norad med samma data när den hämtade det... 
 I loggen insertion2.log ser vi hur många gånger samma object hämtats och skrivits över vilket ledde till att dens ID blev plussat i databasen. 
+
+
+## **STATUS 04/04/24**
+Har ändrat i GP_DATABASE_AUTO_DEV 
+    Filerna I api/ är det som gäller.  
+**fetch_insert.py** är den som kördes för att populera gpdata2 databasen. 
+
+**fetch_insert_auto.py** är den som ska bli automatisk och köras i oändligheten. 
+    Den har nu en query som hämtar data baserat på creation_date som skapat de senaste 12 h. (0.5) 
+    I morgon kommer jag köra den igen och se om den skriver över eller lägger in den nya datan BASERAT PÅ om HASHEN har ändrats. 
+        Scriptet ska funka så att den hämtar all hash och om datan från requesten som kommer in har samma hash uppdateras den inte. 
