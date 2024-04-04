@@ -38,11 +38,11 @@ def create_tables():
     config.read(config_file_path)
 
     # Get database connection parameters
-    host = config.get('tables', 'host')
-    dbname = config.get('tables', 'dbname')
-    user = config.get('tables', 'user')
-    password = config.get('tables', 'password')
-    port = config.get('tables', 'port')
+    host = config.get('tables2', 'host')
+    dbname = config.get('tables2', 'dbname')
+    user = config.get('tables2', 'user')
+    password = config.get('tables2', 'password')
+    port = config.get('tables2', 'port')
 
     try:
         # Connect to the database

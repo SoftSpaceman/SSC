@@ -1,6 +1,12 @@
 
 
-# IT works fine and I will now create a new file to elaborate on a automatic update of the database.
+
+#######################################################################################################
+# THIS INSERTIS INTO GPDATA2
+# the "population" script is used to fetch data from space-track.org and insert it into the gp table in the gpdata2 database.
+#######################################################################################################
+
+
 
 import os
 import configparser
@@ -28,7 +34,7 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 # Create a file handler and set the formatter
-LOG_FILE = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'insertion.log')
+LOG_FILE = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fetch_insert.log')
 file_handler = RotatingFileHandler(LOG_FILE, backupCount=3)
 formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 file_handler.setFormatter(formatter)
@@ -62,18 +68,20 @@ def populate():
         requestGPdata = f'/class/gp/epoch/%3Enow-1/orderby/norad_cat_id/format/json'
 
         #This query give all data from this moment right now and will be run every minute to get the latest data.
-        
-        requestGPdataNOW = f'/class/gp/epoch/%3Enow/orderby/norad_cat_id/format/json'
+        # requestGPdataNOW = f'/class/gp/epoch/%3Enow/orderby/norad_cat_id/format/json'
 
         # This query will get all data from the gp class that has a decay date that is null. 
         requestGPdataDecay = f'/class/gp/DECAY_DATE/null-val/orderby/NORAD_CAT_ID%20asc/emptyresult/show'
 
+
+        reqNOW= f'/class/gp/CREATION_DATE/now/orderby/NORAD_CAT_ID%20asc/emptyresult/show'
+
         # Get database connection parameters
-        host = config.get('tables', 'host')
-        dbname = config.get('tables', 'dbname')
-        user = config.get('tables', 'user')
-        password = config.get('tables', 'password')
-        port = config.get('tables', 'port')
+        host = config.get('tables2', 'host')
+        dbname = config.get('tables2', 'dbname')
+        user = config.get('tables2', 'user')
+        password = config.get('tables2', 'password')
+        port = config.get('tables2', 'port')
 
         # Main script
         with requests.Session() as session:
@@ -85,7 +93,7 @@ def populate():
 
             # Fetch satellite data
             logging.info("Fetching satellite data...")
-            resp = session.get(uriBase + requestCmdAction + requestGPdataNOW)
+            resp = session.get(uriBase + requestCmdAction + requestGPdataDecay)
             resp.raise_for_status()  # Raise an error for bad response status
             logging.info("Satellite data fetched successfully.")
 

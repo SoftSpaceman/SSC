@@ -57,7 +57,7 @@ def create_database():
         cursor = conn.cursor()
 
         # Execute SQL query to create a new database
-        cursor.execute("CREATE DATABASE gpdata3") # gpdata_with_history
+        cursor.execute("CREATE DATABASE gpdata2") # gpdata_with_history
 
         logging.info("Database created successfully!")
 

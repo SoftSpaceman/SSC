@@ -43,8 +43,7 @@ The update.py script is the go to script right now.
 fetch_insert_auto.py 
 fetch_insert.py - works and can be used to try things or to populate without beeing stuck in a loop. 
 
-
-At the bottom thats where you are. 
+At the bottom of the chat, thats where we at. 
 
 We hade aproblem with the script running without a stop so I asked for clean up of hte script and improvement. 
 **I think** start over fresh tomorow, sahve the script that works indefinitly but fix so you CAN terminte it befor moving on to testing the nimproved script.. 
@@ -75,3 +74,67 @@ TODAYS TOMMOROW TASKTS
 [ ] Flagging function, to get notification on when a object has been updated with new data.. 
 [ ] Decay alert( kind of ) when data is more than 5 day old.. print statement... ? 
 [ ] Monitor update script to catch exat time of creation_date form Space.track. 
+
+## **TODAY 04/04/24**
+
+The fetch_insert_auto_new.py is running in a loop now to fetch data RINGT NOW on the epoch constraint... 
+    This might not be the best since it is the creation data of the gp file that is the main one they go by ...
+    The query given by space track to get the lates data acording to peoch ois becasue the epoch can be planed in the future!" 
+
+    But the creationg date is more general and takes all data that they uploded this day. 
+    SO I am going to run the script with the **creationg date = now** on another database. To se witch one does the best thing. 
+**ALSO**
+I must see if new data is beeing inserten and just not overrun in with the epoch query... 
+
+**ALSO** 
+I need to make the scritp run without it beeing terminated by exiting the VCS.
+
+
+**Mission** 
+Create functions for the UI 
+    Flagging.
+    decay data. 
+    Search. 
+
+
+
+
+
+###  Möte med Anton! 
+
+fast API skapa den! 
+
+egen kontainert eller hle intergread i schedulern? 
+
+Fristående känns rimlig. 
+
+Skissa upp endpoints skapa ett restfull api. 
+
+Länken som anton skickade i teams. 
+filerna som är interssant: backend server och database client.
+rad 104 i backendserver. 
+
+#### **Konklusion av samtalet.** 
+börja skissa på endpoints till din databas. 
+använd fast API 
+skapa functionerna. 
+
+
+**checkpoint**
+Gällande BACKEND. 
+två scripten: 
+fetch_insert_auto_db2.py
+    Denna ska köras varje minut. Queryn måste annpassa så den letar data som skapats senaste minuten. 
+
+fetch_insert_auto_db3.py 
+    Denna ska köras 3 gågner om dagen. och hämta data. 
+
+Jag måste ta reda på om datan lagras med samma NORAD osv.. så som den gjort i gamla skript utan problem.... 
+
+
+En paniklösning är att hämta data från gp_history från 5 dagar bakot för att ha lite att jobba med när vi skriver endpoints och functioner. 
+
+**problem** 
+Med gpdata2 och query i fetch_insert_auto_db2.py 
+    Den skriv bara över varje norad med samma data när den hämtade det... 
+I loggen insertion2.log ser vi hur många gånger samma object hämtats och skrivits över vilket ledde till att dens ID blev plussat i databasen. 
