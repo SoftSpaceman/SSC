@@ -1,0 +1,19 @@
+# Use an appropriate base image
+FROM python:3.9
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the database scripts and endpoints to the working directory
+COPY . /app
+
+# Install any dependencies (if necessary)
+# For example, if you're using Flask for endpoints:
+# RUN pip install flask
+
+# Expose any necessary ports (if your endpoints run on a specific port)
+# EXPOSE 5000
+
+# Define the command to run your application
+# For example, if your script is named app.py:
+# CMD ["python", "app.py"]

@@ -1,0 +1,30 @@
+2024-04-12 12:40:11,561 - orbital_data_logger - ERROR - Error occurred during search: 404: Object not found in database
+2024-04-12 12:40:35,515 - orbital_data_logger - INFO - Search successful for NORAD_CAT_ID: 5
+2024-04-12 12:43:12,043 - orbital_data_logger - INFO - Search successful for NORAD_CAT_ID: 5
+2024-04-12 13:08:01,443 - orbital_data_logger - ERROR - Error occurred during search: syntax error at or near ")"
+2024-04-12 13:08:53,029 - orbital_data_logger - ERROR - Error occurred during search: syntax error at or near ")"
+2024-04-12 13:09:17,602 - orbital_data_logger - ERROR - Error occurred during search: syntax error at or near ")"
+2024-04-12 13:12:36,246 - orbital_data_logger - INFO - Search successful for NORAD_CAT_ID: 5
+2024-04-12 13:44:46,087 - orbital_data_logger - ERROR - Error occurred during custom subset creation: syntax error at or near "%"
+2024-04-12 13:45:08,760 - orbital_data_logger - ERROR - Error occurred during custom subset creation: syntax error at or near "%"
+2024-04-12 13:48:41,797 - orbital_data_logger - ERROR - Error occurred during custom subset creation: syntax error at or near "%"
+2024-04-12 13:52:28,140 - orbital_data_logger - ERROR - Error occurred during custom subset creation: fetch() got an unexpected keyword argument 'norad_ids'
+2024-04-12 13:54:59,762 - orbital_data_logger - ERROR - Error occurred during custom subset creation: syntax error at or near "%"
+2024-04-12 14:08:05,840 - orbital_data_logger - INFO - Search successful for NORAD_CAT_ID: 5
+2024-04-12 14:09:40,348 - orbital_data_logger - ERROR - Error occurred during custom subset creation: 404: No objects found for the specified NORAD IDs
+2024-04-12 14:11:59,441 - orbital_data_logger - ERROR - Error occurred during custom subset creation: 404: No objects found for the specified NORAD IDs - 116
+2024-04-12 14:12:58,066 - orbital_data_logger - ERROR - Error occurred during custom subset creation: 404: No objects found for the specified NORAD IDs - "Errpr occurd on line: 116
+2024-04-12 15:14:48,148 - orbital_data_logger - ERROR - Error occurred during custom subset creation: 404: No objects found for the specified NORAD IDs
+2024-04-12 15:31:35,309 - orbital_data_logger - INFO - Search successful for NORAD_CAT_ID: 5
+2024-04-12 15:33:28,392 - orbital_data_logger - INFO - Search successful for NORAD_CAT_ID: 59404
+2024-04-16 13:39:15,469 - orbital_data_logger - INFO - Search successful for NORAD_CAT_ID: 12
+2024-04-16 15:14:34,989 - orbital_data_logger - INFO - Search successful for NORAD_CAT_ID: 44534
+2024-04-17 14:56:25,512 - orbital_data_logger - ERROR - Error occurred during custom subset creation: invalid input for query argument $1: (('NORAD_IDs', [5, 11, 12]),) (invalid array element at index 0: an integer is required (got type tuple))
+2024-04-17 14:58:51,272 - orbital_data_logger - ERROR - Error occurred during custom subset creation: invalid input for query argument $1: 5 (a sized iterable container expected (got type 'int'))
+2024-04-17 14:59:47,849 - orbital_data_logger - ERROR - Error occurred during custom subset creation: invalid input for query argument $1: (5,) (an integer is required (got type tuple))
+2024-04-18 11:11:57,038 - orbital_data_logger - INFO - Search successful for NORAD_CAT_ID: 5
+2024-04-18 11:13:02,812 - orbital_data_logger - INFO - Search successful for NORAD_CAT_ID: 5
+2024-04-18 11:14:07,570 - orbital_data_logger - INFO - Search successful for NORAD_CAT_ID: 5
+2024-04-18 11:15:32,607 - orbital_data_logger - INFO - Search successful for NORAD_CAT_ID: 5
+2024-04-18 11:16:45,903 - orbital_data_logger - INFO - Search successful for NORAD_CAT_ID: 5
+2024-04-18 11:17:27,339 - orbital_data_logger - INFO - Search successful for NORAD_CAT_ID: 5
