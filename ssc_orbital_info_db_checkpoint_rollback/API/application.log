@@ -1,0 +1,5 @@
+2024-04-10 13:04:44,465 - orbital_data_logger - ERROR - Error occurred during display_table: for SELECT DISTINCT, ORDER BY expressions must appear in select list
+2024-04-10 13:06:19,985 - orbital_data_logger - ERROR - Error occurred during display_table: for SELECT DISTINCT, ORDER BY expressions must appear in select list
+2024-04-10 13:11:55,782 - orbital_data_logger - ERROR - Error occurred during display_table: column "country" does not exist
+2024-04-10 13:12:36,037 - orbital_data_logger - ERROR - Error occurred during display_table: column "country" does not exist
+2024-04-10 13:14:33,931 - orbital_data_logger - INFO - Search successful for NORAD_CAT_ID: 5

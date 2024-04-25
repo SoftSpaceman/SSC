@@ -1,0 +1,30 @@
+
+
+## THIS FOLDER WILL BE THE DEVELOPMENT OF ssc_orbital_info_db_OLD
+
+### THINGS TO DO HERE. 
+
+**AUTOMATION** - make the script run indefenetly, even when the computer is down. 
+- needs server. 
+
+
+
+
+
+**REST API** - skiss upp functions. 
+FAST api 
+
+endpoints. 
+- the connection is working. it loads in the whole database ofcours.
+    So this needs to be fixed tommorow. 
+
+## **MERGE THIS FOLDER WITH THE _OLD one. MAKE THE CHAGNES IN THIS BE IN THE OLD. BECAUSE THE OLD IS USING THE SAME HASLIB ALL THE TIME.**
+#### dont worry, there is a copy of the old folder in its old state in the sst_database folder. 
+
+
+**this is needed as well**
+It shall alow users to search objects in my database.
+and flag objects. 
+
+
+A serchable function. 

@@ -1,0 +1,177 @@
+# requriments
+
+
+**Checkpoint**
+
+The hasing is working with the insertion of the api data.. 
+I have now populated the databse with all NORAD without a decay-date. 
+
+I will now try to either make a new file that runs once every minute to update the database on hte contiditon timestamp. 
+    PROBLEMS? 
+        Is using a new hasfunction in another file, adding to the risk of duplicates? 
+
+
+## ABOUT HASLIB AND HASING 
+
+The likelihood of generating duplicate hashes using the hashlib library in Python or any other hashing algorithm primarily depends on the quality and characteristics of the hash function itself, as well as the nature of the input data.
+
+The hashlib library in Python provides interfaces to various secure hash and message digest algorithms. These algorithms, such as MD5, SHA-1, SHA-256, etc., are designed to produce unique hash values for different inputs. However, due to the finite range of hash values and the potential for collisions (different inputs producing the same hash value), there is always a theoretical possibility of generating duplicate hashes.
+
+For cryptographic hash functions like SHA-256, the probability of accidental collisions is exceedingly low, especially when the input data is sufficiently varied and randomly distributed.
+
+However, if you are concerned about the possibility of collisions, especially in scenarios where a large number of hashes are being generated, you can employ techniques like salting (adding unique random data to each input before hashing) or using longer hash functions to reduce the likelihood of collisions.
+
+In summary, while it's theoretically possible to generate duplicate hashes, the likelihood is extremely low with secure hash functions like those provided by hashlib.
+
+
+
+
+**checkpoint**
+The update.py script is the go to script right now. 
+    I have a consern that the script wont insert new data because of the hash... 
+        I am not sure the logic works, that beeing, as soon as the fetch function get new data and asignes a hash that hash is uniq.. ? 
+        Is this waterprofe and am I just overthinking it...  
+
+
+## ANYWAY 
+
+
+
+### FOR TOMORROW: 
+**Check this link to start the day:** https://chat.openai.com/share/fa32fb27-47c5-4e17-8d9f-9b257dade4cd
+**SCRIPTS THAT ARE RELEVANT**
+fetch_insert_auto.py 
+fetch_insert.py - works and can be used to try things or to populate without beeing stuck in a loop. 
+
+At the bottom of the chat, thats where we at. 
+
+We hade aproblem with the script running without a stop so I asked for clean up of hte script and improvement. 
+**I think** start over fresh tomorow, sahve the script that works indefinitly but fix so you CAN terminte it befor moving on to testing the nimproved script.. 
+[ ] test teh improved scritp. 
+
+
+#### **also**
+Check if the update works. Does it add in new data? Duplciates? logging is working?
+
+## SOO..
+**what we have** 
+A database.
+    one table with hashes to define changes.. 
+
+A script that consatnly runs and inserts upddates if there is some.. 
+    Kind of.. I am not sure how it works yet... Time will tell. 
+
+**NOW**
+Create a UI. Probably with flask...
+https://chat.openai.com/share/ca5f327c-1004-4178-93f5-04894646553c
+At the end of this chat we talk about flask..  
+
+
+
+TODAYS TOMMOROW TASKTS 
+
+[ ] Make a sercheble funtion, UI probably.. or in consol... 
+[ ] Flagging function, to get notification on when a object has been updated with new data.. 
+[ ] Decay alert( kind of ) when data is more than 5 day old.. print statement... ? 
+[ ] Monitor update script to catch exat time of creation_date form Space.track. 
+
+## **TODAY 04/04/24**
+
+The fetch_insert_auto_new.py is running in a loop now to fetch data RINGT NOW on the epoch constraint... 
+    This might not be the best since it is the creation data of the gp file that is the main one they go by ...
+    The query given by space track to get the lates data acording to peoch ois becasue the epoch can be planed in the future!" 
+
+    But the creationg date is more general and takes all data that they uploded this day. 
+    SO I am going to run the script with the **creationg date = now** on another database. To se witch one does the best thing. 
+**ALSO**
+I must see if new data is beeing inserten and just not overrun in with the epoch query... 
+
+**ALSO** 
+I need to make the scritp run without it beeing terminated by exiting the VCS.
+
+
+**Mission** 
+Create functions for the UI 
+    Flagging.
+    decay data. 
+    Search. 
+
+
+
+
+
+###  Möte med Anton! 
+
+fast API skapa den! 
+
+egen kontainert eller hle intergread i schedulern? 
+
+Fristående känns rimlig. 
+
+Skissa upp endpoints skapa ett restfull api. 
+
+Länken som anton skickade i teams. 
+filerna som är interssant: backend server och database client.
+rad 104 i backendserver. 
+
+#### **Konklusion av samtalet.** 
+börja skissa på endpoints till din databas. 
+använd fast API 
+skapa functionerna. 
+
+
+**checkpoint**
+Gällande BACKEND. 
+två scripten: 
+fetch_insert_auto_db2.py
+    Denna ska köras varje minut. Queryn måste annpassa så den letar data som skapats senaste minuten. 
+
+fetch_insert_auto_db3.py 
+    Denna ska köras 3 gågner om dagen. och hämta data. 
+
+Jag måste ta reda på om datan lagras med samma NORAD osv.. så som den gjort i gamla skript utan problem.... 
+
+
+En paniklösning är att hämta data från gp_history från 5 dagar bakot för att ha lite att jobba med när vi skriver endpoints och functioner. 
+
+**problem** 
+Med gpdata2 och query i fetch_insert_auto_db2.py 
+    Den skriv bara över varje norad med samma data när den hämtade det... 
+I loggen insertion2.log ser vi hur många gånger samma object hämtats och skrivits över vilket ledde till att dens ID blev plussat i databasen. 
+
+
+## **STATUS 04/04/24**
+Har ändrat i GP_DATABASE_AUTO_DEV 
+    Filerna I api/ är det som gäller.  
+**populate_gpdata2.py** är den som kördes för att populera gpdata2 databasen. 
+
+**insert_gpdata2.py** är den som ska bli automatisk och köras i oändligheten. 
+    Den har nu en query som hämtar data baserat på creation_date som skapat de senaste 12 h. (0.5) 
+    I morgon kommer jag köra den igen och se om den skriver över eller lägger in den nya datan BASERAT PÅ om HASHEN har ändrats. 
+        Scriptet ska funka så att den hämtar all hash och om datan från requesten som kommer in har samma hash uppdateras den inte. 
+
+
+**insert_gpdata2_auto.py**
+Denna ska köras varje minut. med en query som tittar 5 minuter bakåt. 
+
+
+###################################################################################################
+**checkpoint time: 12:48 05/05/24**
+Bytt namn på filer. 
+Databsen heter orbital_info_bd
+
+Databasen har befolkats av populate_orbital_info.py som änvander en query som hämtar all data som inte har decay value. (alltså decay_value = null )
+    Därav de sjukt gamla creation date. 
+
+Efter det körs insert_orbital_info_auto.py som har en query som hämtar data med creation date från de senaste 5 minuterna. 
+    Där av är loggen jsut nu tom eftersom inga obejct skapat de senaste 5 minuterna. 
+
+**MÅL**
+
+Se till att insert_orbital_info_auto.py körs automatiskt i oändligheten. 
+    Vad händer omden bryts? 
+Se till att ett skript hämtar data de senaste 12h timmarna om loopen bryts. 
+
+Skapa restAPI 
+och basic funtioner 
+endpoints. 

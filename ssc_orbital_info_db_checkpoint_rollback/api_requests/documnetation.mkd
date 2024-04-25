@@ -1,0 +1,12 @@
+## **05/04/24** 
+NU har databsen populerats med query ( **d** ) i **insert_orbital_info_auto_new.py** och avbrytits för att inte köra den wuerin hela tiden. 
+
+Nu körs query ( **x** ) som hämtar data från nu och 5 minuter bak i tiden. 
+    Skritpet körs 1 gång i minuten nu. 
+        det blir en överlappning i datan eftersom den körs varje minut hittar den sklart samma data nästan, men det här är för att det med all säkerhet
+        inte ska missa någon data. Det kna komma att kalibereras i framtiden. 
+
+Just nu kan databasen behöva uppdateras för hand varje gång datorn stängs. 
+Då kör du query ( **d** ) eller (**c**) EN GÅNG och avbryter skriptet för att sedan aktivera qquery (**x**) igen. 
+
+[ ] Lös oänldig körning för att slippa detta. 

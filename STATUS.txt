@@ -1,0 +1,22 @@
+ssc_orbital_info_db 
+är den mapp som gäller, 
+
+GP_database_auto_dev 
+är ramverket som ssc_orbital_info_db bygger på. 
+
+	- om något skulle fuckas upp eller om jag tappar bort mig kan jag gå tillbaka till den. 
+
+
+
+08/04/24 
+
+Just nu körs loopen som hämtar data till datbasen i ssc_orbital_info_dd/ 
+	insert_orbital_info_auto_new.py.
+
+ssc_orbital_info_db ska blir ssc_orbital_info_db_OLD
+
+
+
+ssc_orbital_info_db Skapat 08/04/24 10:44 är en kopia som ska resnsa upp och bana vägen
+	fframmåt för riktigt automatisering och api bygge/ frontend / rest api. .. (optimatisering) 
+
