@@ -1,7 +1,0 @@
-2024-03-29 22:53:33,321 - INFO - Database created successfully!
-2024-03-29 22:53:33,410 - INFO - Tables created successfully!
-2024-03-29 22:53:34,543 - INFO - Login successful
-2024-03-29 22:53:40,710 - INFO - Data fetched successfully
-2024-03-29 22:53:56,296 - INFO - Data insertion into PostgreSQL database gp_file, successful!
-2024-03-29 22:53:56,296 - INFO - Database connection closed.
-2024-03-29 22:53:56,296 - INFO - Number of objects inserted: 57907
