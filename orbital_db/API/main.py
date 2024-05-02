@@ -52,7 +52,6 @@ logger = configure_logger()
 
 
 
-
 ################################################################################################
 ################# TESTING GROUNDS ##################### 15/05/2024 #############################
 
@@ -99,19 +98,19 @@ async def create_subset(subset_request: SubsetRequest):
 # http://127.0.0.1:8000/display_table
 
 # Display table endpoint
-@app.get("/display_table")
-async def display_table():
-    try:
-        conn = await connect_to_database()
-        data = await fetch_data(conn, """SELECT DISTINCT NORAD_CAT_ID, CREATION_DATE, OBJECT_NAME, epoch, tle_line1, tle_line2
-                                            FROM gp 
-                                            ORDER by CREATION_DATE desc , NORAD_CAT_ID  
-                                            LIMIT 10; """)
-        await close_connection(conn)
-        return {"table_data": data}
-    except Exception as e:
-        logger.error(f"Error occurred during display_table: {e}")
-        raise HTTPException(status_code=500, detail="Internal Server Error")
+# @app.get("/display_table")
+# async def display_table():
+#     try:
+#         conn = await connect_to_database()
+#         data = await fetch_data(conn, """SELECT DISTINCT NORAD_CAT_ID, CREATION_DATE, OBJECT_NAME, epoch, tle_line1, tle_line2
+#                                             FROM gp 
+#                                             ORDER by CREATION_DATE desc , NORAD_CAT_ID  
+#                                             LIMIT 10; """)
+#         await close_connection(conn)
+#         return {"table_data": data}
+#     except Exception as e:
+#         logger.error(f"Error occurred during display_table: {e}")
+#         raise HTTPException(status_code=500, detail="Internal Server Error")
 
 
 
@@ -378,74 +377,67 @@ async def search_object(norad_cat_id: int, start_date: Optional[str] = None, end
 ## THESE HAVE NOT BEEN TESTED YET
 
 
-# from fastapi import FastAPI, HTTPException
-# from database_operations import connect_to_database, execute_query
-
-# app = FastAPI()
-
-# # Function to check for conditions and trigger alerts
-# async def check_alerts():
-#     try:
-#         conn = await connect_to_database()
+# Function to check for conditions and trigger alerts
+async def check_alerts():
+    try:
+        conn = await connect_to_database()
         
-#         # Query to check for conditions (example: changes in object altitude)
-#         query = "SELECT altitude FROM objects ORDER BY timestamp_column DESC LIMIT 2"
-#         results = await execute_query(conn, query)
-#         if len(results) == 2:
-#             current_altitude, previous_altitude = results[0], results[1]
-#             if current_altitude != previous_altitude:
-#                 # Trigger alert based on altitude change
-#                 # You can customize this part based on your specific alerting logic
-#                 # For demonstration purposes, we're raising an HTTPException with a message
-#                 raise HTTPException(status_code=200, detail="Alert: Change in object altitude detected")
+        # Query to check for conditions (example: changes in object altitude)
+        query = "SELECT altitude FROM objects ORDER BY timestamp_column DESC LIMIT 2"
+        results = await execute_query(conn, query)
+        if len(results) == 2:
+            current_altitude, previous_altitude = results[0], results[1]
+            if current_altitude != previous_altitude:
+                # Trigger alert based on altitude change
+                # You can customize this part based on your specific alerting logic
+                # For demonstration purposes, we're raising an HTTPException with a message
+                raise HTTPException(status_code=200, detail="Alert: Change in object altitude detected")
         
-#         await conn.close()
-#     except Exception as e:
-#         # Handle any exceptions gracefully
-#         print(f"Error checking alerts: {e}")
+        await conn.close()
+    except Exception as e:
+        # Handle any exceptions gracefully
+        print(f"Error checking alerts: {e}")
 
-# # Endpoint to trigger alerts
-# @app.get("/trigger_alerts")
-# async def trigger_alerts():
-#     await check_alerts()
-#     return {"message": "Alerts triggered successfully"}
-
-
+# Endpoint to trigger alerts
+@app.get("/trigger_alerts")
+async def trigger_alerts():
+    await check_alerts()
+    return {"message": "Alerts triggered successfully"}
 
 
 
-# import time
 
-# @app.get("/metrics")
-# async def get_metrics():
-#     try:
-#         conn = await connect_to_database()
+
+@app.get("/metrics")
+async def get_metrics():
+    try:
+        conn = await connect_to_database()
         
-#         # Query to get data quantity
-#         data_quantity_query = "SELECT COUNT(*) FROM your_table"
-#         data_quantity = await execute_query(conn, data_quantity_query)
+        # Query to get data quantity
+        data_quantity_query = "SELECT COUNT(*) FROM your_table"
+        data_quantity = await execute_query(conn, data_quantity_query)
         
-#         # Query to get update rates (assuming you have a timestamp column)
-#         current_time = int(time.time())
-#         one_hour_ago = current_time - 3600  # One hour ago
-#         update_rate_query = f"SELECT COUNT(*) FROM your_table WHERE timestamp_column >= {one_hour_ago}"
-#         update_rate = await execute_query(conn, update_rate_query)
+        # Query to get update rates (assuming you have a timestamp column)
+        current_time = int(time.time())
+        one_hour_ago = current_time - 3600  # One hour ago
+        update_rate_query = f"SELECT COUNT(*) FROM your_table WHERE timestamp_column >= {one_hour_ago}"
+        update_rate = await execute_query(conn, update_rate_query)
         
-#         # Calculate latency between fetch and loading into the database (assuming you have relevant timestamps)
-#         latency_query = "SELECT fetch_timestamp, load_timestamp FROM your_table WHERE fetch_timestamp IS NOT NULL AND load_timestamp IS NOT NULL"
-#         latency_results = await execute_query(conn, latency_query)
-#         latencies = [(load_ts - fetch_ts) for fetch_ts, load_ts in latency_results if fetch_ts and load_ts]
-#         avg_latency = sum(latencies) / len(latencies) if latencies else 0
+        # Calculate latency between fetch and loading into the database (assuming you have relevant timestamps)
+        latency_query = "SELECT fetch_timestamp, load_timestamp FROM your_table WHERE fetch_timestamp IS NOT NULL AND load_timestamp IS NOT NULL"
+        latency_results = await execute_query(conn, latency_query)
+        latencies = [(load_ts - fetch_ts) for fetch_ts, load_ts in latency_results if fetch_ts and load_ts]
+        avg_latency = sum(latencies) / len(latencies) if latencies else 0
         
-#         await conn.close()
+        await conn.close()
         
-#         return {
-#             "data_quantity": data_quantity[0],
-#             "update_rate": update_rate[0],
-#             "avg_latency": avg_latency
-#         }
-#     except Exception as e:
-#         return {"error": str(e)}
+        return {
+            "data_quantity": data_quantity[0],
+            "update_rate": update_rate[0],
+            "avg_latency": avg_latency
+        }
+    except Exception as e:
+        return {"error": str(e)}
 
 ##############################################################################################################################
 ##############################################################################################################################

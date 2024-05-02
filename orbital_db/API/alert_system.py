@@ -13,31 +13,31 @@ class ObjectData(BaseModel):
     NORAD_IDs: List[int]
     CREATION_DATE: datetime
 
-@router.post("/old_creation_date_alert/")
-async def receive_object_data(data: ObjectData, days_threshold: int = 4):
-    conn = await connect_to_database()
-    outdated_ids = set()  # Using set to store unique NORAD_CAT_IDs
-    outdated_count = 0
+# # @router.post("/old_creation_date_alert/")
+# # async def receive_object_data(data: ObjectData, days_threshold: int = 4):
+# #     conn = await connect_to_database()
+# #     outdated_ids = set()  # Using set to store unique NORAD_CAT_IDs
+# #     outdated_count = 0
     
-    # Fetch latest creation date for each unique NORAD_CAT_ID
-    query = "SELECT norad_cat_id, MAX(creation_date) AS latest_creation_date FROM gp GROUP BY norad_cat_id"
-    rows = await fetch_data(conn, query)
+# #     Fetch latest creation date for each unique NORAD_CAT_ID
+# #     query = "SELECT norad_cat_id, MAX(creation_date) AS latest_creation_date FROM gp GROUP BY norad_cat_id"
+# #     rows = await fetch_data(conn, query)
     
-    # Iterate over fetched rows
-    for row in rows:
-        norad_cat_id = row["norad_cat_id"]
-        latest_creation_date = row["latest_creation_date"]
+# #     Iterate over fetched rows
+# #     for row in rows:
+# #         norad_cat_id = row["norad_cat_id"]
+# #         latest_creation_date = row["latest_creation_date"]
         
-        # Check if the latest creation date is older than the threshold
-        if datetime.now() - latest_creation_date > timedelta(days=days_threshold):
-            outdated_ids.add(norad_cat_id)
-            outdated_count += 1
-            send_alert(str(norad_cat_id), f"Latest creation date is older than {days_threshold} days for NORAD_CAT_ID: {norad_cat_id}")
+# #         Check if the latest creation date is older than the threshold
+# #         if datetime.now() - latest_creation_date > timedelta(days=days_threshold):
+# #             outdated_ids.add(norad_cat_id)
+# #             outdated_count += 1
+# #             send_alert(str(norad_cat_id), f"Latest creation date is older than {days_threshold} days for NORAD_CAT_ID: {norad_cat_id}")
     
-    # Log or store the outdated NORAD_CAT_IDs for further tracking
-    # log_outdated_ids(outdated_ids)
+# #     Log or store the outdated NORAD_CAT_IDs for further tracking
+# #     log_outdated_ids(outdated_ids)
     
-    return {"message": "Data received successfully", "outdated_count": outdated_count}
+# #     return {"message": "Data received successfully", "outdated_count": outdated_count}
 
 # Function to log or store outdated NORAD_CAT_IDs
 # def log_outdated_ids(outdated_ids: set):

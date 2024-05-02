@@ -177,7 +177,8 @@ def fetch_satellite_data(session, uriBase, requestCmdAction, any):
 
 def insert_data_into_database(conn, fetched_data):
     """
-    Insert fetched data into PostgreSQL database.
+    Insert fetched data into PostgreSQL database. With added hashing and a counter that keeps track
+    of the number of data points inserted and skipped.
     """
     try:
         with conn.cursor() as cur:
