@@ -1,0 +1,121 @@
+
+
+
+![diagram](orbital_db_diagram.jpg)
+
+
+## ORBITAL DATABASE PIPELINE.
+This directory contains the scripts needed to create and maintain an orbital database with data requested/fetched from the SpaceTrack.org GP catalog. It is a direct copy of the catalog with 4 added columns: 
+id
+insertion_date
+data_decay
+hash 
+
+They are described in the TABLE COLUMN DESCRIPTION at the end of this document. 
+
+The script that fetches data and inserts it into the database is meant to run infinitely and it sends a request to the SpaceTrack API once every minute with a query that check for newly added objects with a creation_date timeframe from now and 10 minutes back in time. 
+
+So for every minute the script looks back 10 minutes to check for newly added objects.
+This is just to reduce the amount of data fetched, that might put stress on the process.
+0.0068 fractions of a day was as close as I could get to "every minute, look back a minute".
+
+!!! In case of maintenance of the script where the loop that fetches the data has to be broken, queries that looks back farther in time are available to make up for missed data that might have been published by SpaceTrack during maintenance time.
+
+***For questions regarding logic, maintenance or bugs. Please feel free to email me on:*** 
+**adam.qvist93@gmail.com**
+
+---------------------------------------------------------------------------------------------------------------------
+
+### THIS IS A STEP BY STEP GUIDE ON HOW TO SET UP AND MAINTAIN ORBITAL_DB 
+
+#### Step 1. 
+
+Go to **CONFIG**. 
+Here the you specify your credentials for Spacetracks API under [API]
+
+Under the [database] you specify the login of your Postgres account and the server connections and under what database you want to create your database in. Default for PostgreSQL is postgres.
+
+Under [tables] you specify the name of the database, this will help the create_table.py script create tables for the database. It needs the same login credentials as [database]. I have chosen orbital_db as name in this case. Feel free to change if you find a better name.
+ !! ( IF YOU CHANGE HERE, YOU NEED TO GO TO create_db.py TO CHANGE THE NAME THERE AS WELL ) !! 
+
+
+#### Step 2. 
+
+Go to **DATABASE**.
+This folder can be used to create more tables for the database if needed.
+ 
+RUN the creation_main.py file to run the scripts that create the database and associate tables.
+
+
+#### STEP 3. 
+
+Go to **SPACETRACK_REQUESTS**
+Scroll down to the population() function.
+change the query parameter to * populate *. This variable contains a query that will fetch every unique object in the database without a decay date. 
+RUN the script.
+This will create a log in the fetch_log directory. Look at the log and TERMINATE the script in the terminal  when all data has finished its fetch and insertion into the database.
+
+NOW change the query parameter to * query *. This variable contains a query that will fetch every data with a creation date of now ( when the script is executed ) and approximately 10 minutes back in time. ( now-0.0068 ) This link explains the parameters: https://www.space-track.org/documentation#/api  
+
+This script will now run every 60 seconds to stay out of the rate limit set by Space-Track.
+
+The log folder will display which object that has been fetched and stored as well as errors related to connection issues with the database or potential rate limit violations. 
+
+Improvements can be made in the population function to not display every object inserted to make the error handling visualization easier to distinguish in the log from the vast amount of objects inserted at times. !!  ( EVERYTHING IS LOGGED IN UTC TIME ) !! 
+
+
+#### API management. 
+In the API directory the endpoints and database operations for our orbital_db can be found. 
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+### TABLE COLUMN DESCRIPTION. 
+details in CCSDSs Orbital Data Message recommended standard: https://public.ccsds.org/Pubs/502x0b3e1.pdf 
+Referecne: OMM 4.2.3.2
+
+**id** - SERIAL PRIMARY KEY, added for database identifications. 
+**insertion_date** - date when our database got the data inserted. UTC by default 
+**NORAD_CAT_ID** - identification 
+**CREATION_DATE** - date when Spacetrack inserted the new data. UTC
+**data_decay** - days since the latest epoch got published. ( under development ) 
+**EPOCH** - time of measurements made on the object UTC 
+**ORIGINATOR** - Creating agency or operator.
+**OBJECT_NAME** - Spacecraft name
+**OBJECT_ID** - Object identifier 
+**OBJECT_TYPE** -  Payload, Rocket Body, Debris, Unknown
+**RCS_SIZE** - Small, Medium, Large. 
+**COUNTRY_CODE** - country code 	
+**LAUNCH_DATE** - launch data 
+**SITE** - launch site 
+**DECAY_DATE** - date of reentry of object
+**FILE** - file identifier for groups uploaded together 
+**COMMENT** - comment from spacetrack 
+**CENTER_NAME** -  natural solar system body
+**REF_FRAME** - Reference frame in which the Keplerian element data are given.
+**TIME_SYSTEM** - Time system used for Keplerian elements and covariance data.
+**MEAN_ELEMENT_THEORY** - Description of the Mean Element Theory. Indicates the proper method to employ to propagate the state
+**MEAN_MOTION** - Semi-major axis in kilometers (preferred), or, if MEAN_ELEMENT_THEORY = SGP/SGP4, the Keplerian Mean motion in revolutions per day
+**ECCENTRICITY** - Eccentricity
+**INCLINATION** - Inclination
+**RA_OF_ASC_NODE** - Right ascension of ascending node
+**ARG_OF_PERICENTER** -  Argument of pericenter
+**MEAN_ANOMALY** -  Mean anomaly
+**EPHEMERIS_TYPE** - Default value = 0. (See 4.2.4.7.)
+**CLASSIFICATION_TYPE** - Default value = U. (See 4.2.4.7.)
+**CCSDS_OMM_VERS** - Format version
+**ELEMENT_SET_NO** -  Element set number for this satellite. Normally incremented sequentially but may be out of sync if it is generated from a backup source.
+**REV_AT_EPOCH** - Revolution Number
+**BSTAR** - Drag-like ballistic coefficient, required for SGP4 and SGP4- XP mean element models.
+**MEAN_MOTION_DOT** - First Time Derivative of the Mean Motion
+**MEAN_MOTION_DDOT** - MEAN_ELEMENT_THEORY= SGP or PPT3: Second Time Derivative of Mean Motion
+**SEMIMAJOR_AXIS** - Semi-major axis in kilometers (preferred), or, if MEAN_ELEMENT_THEORY = SGP/SGP4, the Keplerian Mean motion in revolutions per day
+**PERIOD** 
+**APOAPSIS** 
+**PERIAPSIS** 
+**GP_ID** - unique ephemerides identifier
+**TLE_LINE0** 
+**TLE_LINE1**
+**TLE_LINE2** 
+**data_hash** - a unique identifier, used by the script to identify changes in data to ease the process of insertion of objects in the database without duplicating data associated with each object. 
+
